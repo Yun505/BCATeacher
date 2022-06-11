@@ -1,7 +1,6 @@
-# 
-
 import time
 import pickle
+import jsonpickle
 from student import Student
 from teacher import Teacher
 from course import Course
@@ -13,10 +12,13 @@ from robobrowser import RoboBrowser
 DELAY = 0.25
 DELAY = 0.01
 
+# Create a file named <password.txt> and put your password into it
+# Make sure not to accidentally commit and push it to a repository!!
 p_file = open("password.txt", "r")
 password = p_file.read()
 p_file.close()
 
+# Create a file named <username.txt> and put your username into it
 u_file = open("username.txt", "r")
 username = u_file.read()
 u_file.close()
@@ -173,6 +175,24 @@ def load_data():
                 ctxt.write("\n")
 
         ctxt.close()
+        
+    def print_jsonified_text():
+        ctxt = open("classes.txt", "w")
+        ctxt.write("{")
+        ctxt.write('"courses": [')
+        
+        first = True
+
+        for co in sorted(courses, key=lambda x: x.name):
+            if "Lunch" not in co.name and "Study Hall" not in co.name and "Senior Experience" not in co.name and "Projects" not in co.name:
+                if not first:
+                    ctxt.write(",\n")
+                first = False
+                co.update_days()
+                ctxt.write(jsonpickle.encode(co))
+
+        ctxt.write("]}")
+        ctxt.close()
     
     def legit_course_count(std):
         i = 0
@@ -195,6 +215,8 @@ def load_data():
     courses_file = open("courses", "rb")
     courses = pickle.load(courses_file)
     courses_file.close()
+    
+    print_jsonified_text()
 
     # Compute number of students in each grade/dropped BCA
     # grade_count = [0, 0, 0, 0]
