@@ -11,9 +11,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const port = 3000;
 const fs = require('fs');
+var path = require('path');
+
+var jsonPath = path.join(__dirname, '..', 'scraper', 'classes.txt');
 
 var CLASSES_DATA;
-fs.readFile('D:/BCATeacher/scraper/classes.txt', 'utf8', (err, data) => {
+fs.readFile(jsonPath, 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       return;
