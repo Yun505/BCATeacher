@@ -13,8 +13,13 @@
 <body class="bg-black">
     <script>
         function onSignIn(googleUser){
-            //if (googleUser.getBasicProfile().getEmail())
-            console.log(googleUser.getBasicProfile())
+            if (googleUser.getBasicProfile().getEmail().includes("@bergen.org")){
+                window.location= "file:///C:/Users/YunJu/BCA_teacher/BCATeacher/src/schedule_chart.html"
+            }
+            else{
+                alert("The email is not of BCTS, you are not permitted to join, please sign in with your school email or leave.");
+            }
+            //console.log(googleUser.getBasicProfile())
         }
     </script>
     <!-- 
