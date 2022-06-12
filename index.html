@@ -8,13 +8,13 @@
     <title>Main Page</title>
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <link href="../dist/output.css" rel="stylesheet">
+    <link href="./dist/output.css" rel="stylesheet">
 </head>
-<body class="bg-black">
+<body class="bg-black text-white">
     <script>
         function onSignIn(googleUser){
             if (! (googleUser.getBasicProfile().getEmail().includes("@bergen.org"))){
-                window.location= "https://yun505.github.io/BCATeacher/src/index"
+                window.location= "https://yun505.github.io"
             }
             //console.log(googleUser.getBasicProfile())
         }
