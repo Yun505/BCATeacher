@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-signin-client_id" content="568733966603-enuit9s4jdcapqq885cv3ukcaiopjro7.apps.googleusercontent.com">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <title>Main Page</title>
-
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link href="./dist/output.css" rel="stylesheet">
 </head>
 <body class="bg-black text-white">
@@ -28,16 +26,22 @@
     
     
     -->
-    <h1 class="text-3xl font-bold underline">
-        Sign In To Begin
-      </h1>
-    <div class="g-signin2" data-onsuccess="onSignIn">
-        Sign In 
+    <div id="g_id_onload"
+        data-client_id="568733966603-enuit9s4jdcapqq885cv3ukcaiopjro7.apps.googleusercontent.com"
+        data-context="signin"
+        data-ux_mode="popup"
+        data-login_uri="https://yun505.github.io/BCATeacher/index.html"
+        data-auto_prompt="false">
     </div>
-    <div class="flex ">
-        <img class="h-48 w-full object-contain " src="" alt="Logo">
-       <h2> BLue </h2>
-        </script>
+
+    <div class="g_id_signin"
+        data-type="standard"
+        data-shape="pill"
+        data-theme="outline"
+        data-text="signin_with"
+        data-size="large"
+        data-logo_alignment="left">
     </div>
+  
 </body>
 </html>
