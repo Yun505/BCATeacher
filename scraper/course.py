@@ -23,22 +23,35 @@ class Course:
         self.students = []
                     
     def update_days(self):
-        self.days = {
-            "Monday": False,
-            "Tuesday": False,
-            "Wednesday": False,
-            "Thursday": False,
-            "Friday": False
-        }
+        # self.days = {
+        #     "Monday": False,
+        #     "Tuesday": False,
+        #     "Wednesday": False,
+        #     "Thursday": False,
+        #     "Friday": False
+        # }
+        self.days = [
+            False,
+            False,
+            False,
+            False,
+            False
+        ]
+        self.period = -1
         
         # Add the days that the course is active on
         # Get the part of the name that contains the active days
         if len(self.name.split("(")) < 2:
             return
         
-        splitByParen = self.name.split("(")
+        # 20th Century Amer History: 9(B,E)
+        splitByParen = self.name.split("(") # ["20th Century Amer History: 9", "B,E)"]
         activeDays = splitByParen[len(splitByParen)-1].split(")")[0]
         pieces = list(activeDays)
+        
+        pieceWithPeriod = splitByParen[len(splitByParen)-2]
+        activePeriod = pieceWithPeriod[-1]
+        self.period = int(activePeriod)
         
         # Enter traversing whenever we see a -, so that A-C would traverse [A, B, C]
         traversing = False
@@ -54,9 +67,9 @@ class Course:
                 if traversing:
                     traversing = False
                     for i in range(traversingStart, num+1):
-                        self.days[dayNumberToName[i]] = True
+                        self.days[i] = True
                 else:
-                    self.days[dayNumberToName[num]] = True
+                    self.days[num] = True
     
     def add_student(self, uid):
         if uid not in self.students:
