@@ -8,7 +8,7 @@
     <title>Main Page</title>
     <link href="./dist/output.css" rel="stylesheet">
 </head>
-<body class="bg-black text-white">
+<body class="bg-black text-white flex items-center justify-center grid grid-rows-10 grid-flow=col gap-4">
     <!-- 
         TO DO: 
             - create a list of an example teacher's periods
@@ -18,32 +18,29 @@
     
     
     -->
-    <script>
-        function info(){
-
-        }
-    </script>
-
-    <div id="g_id_onload"
-        data-client_id="568733966603-enuit9s4jdcapqq885cv3ukcaiopjro7.apps.googleusercontent.com"
-        data-context="signin"
-        data-ux_mode="popup"
-        data-login_uri="https://yun505.github.io/BCATeacher/"
-        data-auto_prompt="false">
-    </div>
-
-    <div class="g_id_signin"
-        data-type="standard"
-        data-shape="pill"
-        data-theme="outline"
-        data-text="signin_with"
-        data-size="large"
-        data-logo_alignment="center">
-    </div>
-
-    <button onclick=location.href = "https://yun505.github.io/BCATeacher/src/schedule_chart" id="myButton" class="float-left submit-button" class="bg-sky-600 hover:bg-sky-700 ...">
+    <button onclick="location.href = 'https://yun505.github.io/BCATeacher/src/info.html'"   class="rounded row-start-5 row-span-1 bg-sky-600 hover:bg-sky-700 text-white text-xl p-3 ">
         Info
     </button>
+
+    <div class="row-start-6 row-span-1">
+        <div id="g_id_onload"
+            data-client_id="568733966603-enuit9s4jdcapqq885cv3ukcaiopjro7.apps.googleusercontent.com"
+            data-context="signin"
+            data-ux_mode="popup"
+            data-login_uri="https://yun505.github.io/BCATeacher/"
+            data-auto_prompt="false">
+        </div>
+
+        <div class="g_id_signin"
+            data-type="standard"
+            data-shape="pill"
+            data-theme="outline"
+            data-text="signin_with"
+            data-size="large"
+            data-logo_alignment="center">
+        </div>
+    </div>
+   
   
 </body>
 </html>
