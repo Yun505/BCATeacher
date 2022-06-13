@@ -159,12 +159,21 @@ def contained(words, text):
         if x in text: return True
     return False
 
+def validName(name):
+    omit = [
+        "Lunch", "Study Hall", "Senior Experience", "Projects", "IGS"
+    ]
+    for part in omit:
+        if part in name:
+            return False
+    return True
+
 def load_data():
     def print_text():
         ctxt = open("classes.txt", "w")
 
         for co in sorted(courses, key=lambda x: x.name):
-            if "Lunch" not in co.name and "Study Hall" not in co.name and "Senior Experience" not in co.name and "Projects" not in co.name:
+            if validName(co.name):
                 ctxt.write(co.name+"\n")
                 ctxt.write("Teachers:\n")
                 for t in co.teachers:
@@ -184,7 +193,7 @@ def load_data():
         first = True
 
         for co in sorted(courses, key=lambda x: x.name):
-            if "Lunch" not in co.name and "Study Hall" not in co.name and "Senior Experience" not in co.name and "Projects" not in co.name:
+            if validName(co.name):
                 if not first:
                     ctxt.write(",\n")
                 first = False
@@ -249,7 +258,7 @@ def load_data():
     
 
 def main():
-    load_data()
     #search()
+    load_data()
 
 main()
