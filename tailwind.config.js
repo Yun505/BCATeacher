@@ -4,6 +4,11 @@ module.exports = {
     "./src/**/*.{html,js}",
     "./index.html"],
     theme: {
+      listStyleType:{
+        none: 'none',
+        disc: 'disc',
+        decimal: 'decimal',
+      },
       colors:{
         transparent: 'transparent',
         sky: colors.sky,
@@ -11,6 +16,10 @@ module.exports = {
         orange: colors.orange,
         white: colors.white,
         green: colors.green,
+        blue: colors.blue,
+        indigo: colors.indigo,
+        purple: colors.purple,
+        rose: colors.rose,
       },
       extend: {},
     },
