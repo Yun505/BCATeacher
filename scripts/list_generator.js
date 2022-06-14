@@ -43,30 +43,35 @@ function loadData() {
         console.log(courses);
         console.log(students);
 
-        generateList();
+        var tbl = undefined;
 
-        const Filter = document.getElementById('filter');
-        Filter.addEventListener('change', updateValue);
+        tbl = generateList();
+
+        const filter = document.getElementById('filter');
+        filter.addEventListener('input', updateValue);
         function updateValue(e) {
-            generateList(Filter);
+            tbl.remove();
+            tbl = generateList(filter);
         }
     }
 }
 
 // Generate a table of people
-function generateList(Filter) {
+function generateList(filter) {
     var teacherKeys = Object.keys(teachers);
     var displayList = [];
-    if (Filter == undefined){
+    if (filter == undefined || filter.value == ""){
         for (var i = 0; i < teacherKeys.length; i ++){
+            var teacher = teachers[teacherKeys[i]];
             displayList.push(teacher);
         }
     }
     else{
         for (var i = 0; i < teacherKeys.length; i++ ){
             var teacher = teachers[teacherKeys[i]];
-            if ((teacher.name).includes(Filter.value)){
+            if ((teacher.name).toLowerCase().includes(filter.value.toLowerCase())){
                 displayList.push(teacher);
+                console.log(teacher);
             }
         }
     }
@@ -76,11 +81,13 @@ function generateList(Filter) {
     
     // Create the table itself
     for (let j = 0; j < displayList.length; j++) {
+        const tr = tbl.insertRow();
         var text = displayList[j].name;
-        td.appendChild(document.createTextNode(text));
+        tr.appendChild(document.createTextNode(text));
     }
     
     body.appendChild(tbl);
+    return tbl;
 }
 
 document.addEventListener("DOMContentLoaded", function() {
