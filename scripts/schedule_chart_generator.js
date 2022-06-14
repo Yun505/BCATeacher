@@ -1,6 +1,34 @@
+const ROWS = 9;
+const COLUMNS = 5;
+
 var teachers = {}
 var courses = {}
 var students = {}
+var absenceData = {}
+
+function constructTeacherTable(teacher, dict, emptyValue) {
+    if (dict[teacher.uid] != undefined) {
+        return;
+    }
+
+    dict[teacher.uid] = dict[teacher.uid] || [];
+    for (var i = 0; i < ROWS; i++) {
+        var row = []
+        for (var j = 0; j < COLUMNS; j++) {
+            row.push(emptyValue);
+        }
+        dict[teacher.uid].push(row);
+    }
+}
+
+function addAbsence(teacher, day, periodStart, periodEnd) {
+    if (absenceData[teacher.uid] == undefined) {
+        constructTeacherTable(teacher, absenceData, false);
+    }
+    for (var period = periodStart; period <= periodEnd; period++) {
+        absenceData[teacher.uid][period][day] = true;
+    }
+}
 
 function loadData() {
     var oReq = new XMLHttpRequest();
@@ -43,15 +71,17 @@ function loadData() {
         console.log(courses);
         console.log(students);
 
-        generateSchedule(teachers[11052283]);
+        var teacher = teachers[11052283];
+        var startingPeriod = Math.random() * 9
+        addAbsence(teacher, 1, 2, 8);
+
+        generateSchedule(teacher);
     }
 }
 
 // Generate a table of the teacher's schedule
 function generateSchedule(teacher) {
     console.log(teacher);
-    const ROWS = 9;
-    const COLUMNS = 5;
 
     // Construct a 2D array of the teacher's courses
     var schedule = []
@@ -96,6 +126,9 @@ function generateSchedule(teacher) {
             var text = schedule[i][j];
             td.appendChild(document.createTextNode(text));
             td.style.border = '1px solid black';
+            if (absenceData[teacher.uid][i][j]) {
+                td.style.backgroundColor = "red";
+            }
         }
     }
     body.appendChild(tbl);
