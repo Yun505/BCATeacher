@@ -5,14 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logged_in</title>
+    <script src="../scripts/list_generator.js"></script>
     <link href="../dist/output.css" rel="stylesheet">
 </head>
-<body class="bg-black text-white">
-    <div class=" grid grid-cols-3 place-items-end">
-        <button onclick="location.href = 'https://yun505.github.io/BCATeacher/src/schedule_chart'"   class="rounded bg-sky-600 hover:bg-sky-700 text-white text-xl p-3 ">
-            My Schedule
-        </button>
-    </div>
+<body class="bg-black text-white items-center">
+    <button onclick="location.href = 'https://yun505.github.io/BCATeacher/src/schedule_chart'"   class="rounded bg-sky-600 hover:bg-sky-700 text-white text-xl p-3 ">
+        My Schedule
+    </button>
+    
+    <label>
+        <input type="text" placeholder="Filter Names" class="p-3 rounded bg-white text-black" id="filter">
+    </label>
     
 </body>
 </html>

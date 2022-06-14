@@ -20,6 +20,7 @@ module.exports = {
         indigo: colors.indigo,
         purple: colors.purple,
         rose: colors.rose,
+        black: colors.black,
       },
       extend: {},
     },
