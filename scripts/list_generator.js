@@ -60,14 +60,13 @@ function loadData() {
 function generateList(filter) {
     var teacherKeys = Object.keys(teachers);
     var displayList = [];
-    if (filter == undefined || filter.value == ""){
-        for (var i = 0; i < teacherKeys.length; i ++){
+    if (filter == undefined || filter.value == "") {
+        for (var i = 0; i < teacherKeys.length; i ++) {
             var teacher = teachers[teacherKeys[i]];
             displayList.push(teacher);
         }
-    }
-    else{
-        for (var i = 0; i < teacherKeys.length; i++ ){
+    } else {
+        for (var i = 0; i < teacherKeys.length; i++ ) {
             var teacher = teachers[teacherKeys[i]];
             if ((teacher.name).toLowerCase().includes(filter.value.toLowerCase())){
                 displayList.push(teacher);
