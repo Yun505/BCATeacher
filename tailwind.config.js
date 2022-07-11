@@ -4,6 +4,8 @@ module.exports = {
     "./src/**/*.{html,js}",
     "./index.html"],
     theme: {
+      container:{center:true
+      },
       listStyleType:{
         none: 'none',
         disc: 'disc',
